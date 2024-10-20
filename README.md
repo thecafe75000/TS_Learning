@@ -81,4 +81,70 @@ let AGE: number = 18
   let yourAge: number = 18
   ```
 
-### 
+### 数据类型
+
+TS中的数据类型分为两大类：
+
+1. 原始类型(基本数据类型)
+   
+   常用的基本数据类型有5个：number, string, boolean, undefined, null
+
+2. 对象类型(复杂数据类型)
+
+### 基本数据类型
+
+1. number：包含整数值和浮点型小数值, 也包含正数和负数
+   
+   ```ts
+   // 数字类型：整数
+   let age: number = 18
+   
+   // 数字类型：小数
+   let score: number = 99,9
+   
+   // 正数
+   let salary: number = 12000
+   
+   // 负数
+   let benefit: number = -200
+   ```
+
+2. string
+   
+   字符串由零个或多个字符串联而成的，用来表示文本信息
+   
+   字符串可以使用单引号，也可以使用双引号
+   
+   ```ts
+   let food: string = 'cake'
+   ```
+
+3. boolean
+   
+   只有两个值：true 和 false
+   
+   ```ts
+   let isCoding: boolean = true
+   let isSunny: boolean = false 
+   ```
+
+4. undefined、null
+   
+   共同特点：只有一个值，值为类型本身，即：
+   
+   - undefined 类型的值为undefined
+   
+   - null 类型的值为null 
+   
+   不同：
+   
+   - undefined 表示声明了但还没有赋值的变量值(找不到值，即值就是undefined)
+   
+   - null 表示声明了变量并已经赋值，值就是null
+   
+   ```ts
+   let u: undefined // u的值是undefined，或理解为找不到变量u的值
+   let n: null = null
+   ```
+
+
