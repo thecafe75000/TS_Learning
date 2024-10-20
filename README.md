@@ -77,7 +77,7 @@ let AGE: number = 18
 - 使用驼峰命名法：首字母小写，后面的每个单词首字母大写
   
   ```ts
-  let cityName: boolean = "paris"
+  let cityName: string = "paris"
   let yourAge: number = 18
   ```
 
