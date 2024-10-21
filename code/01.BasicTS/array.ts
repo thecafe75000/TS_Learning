@@ -1,9 +1,12 @@
 let names: string[] = ['Tom', 'Mary', 'Annie']
 console.log(names)
+
 names[0] = 'James' // 修改元素的值
 console.log(names)
+
 names[3] = 'Coco' // 给数组添加新元素
 console.log(names)
+
 names[names.length] = 'Vincent'
 console.log(names)
 
