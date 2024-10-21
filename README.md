@@ -171,4 +171,73 @@ TS中的数据类型分为两大类：
 
 - 逻辑运算符: 逻辑与`&&`, 逻辑或`||` , 取反`!`
 
+### 语句
+
+- if语句
+  
+  ```ts
+  let age: number = 18
+  if(age < 18){
+      console.log('go home')
+  }else{
+      console.log('go to office')
+  }
+  ```
+- 三元运算符
+  
+  语法：结果 = 判断条件 ？ 值1 ：值2
+  
+  如果判断条件为 true, 结果为值1
+  
+  如果判断条件为 false, 结果为值2
+  
+  <font color='bronze'>注意：得到结果的类型由值1或值2的类型决定，通常值1 和值2 的类型相同</font>
+  
+  ```ts
+  let result:string = 5 > 3? 'true':'false'
+  console.log(result)
+  ```
+- 循环语句
+  
+  for(初始化语句；判断条件；计数器更新){  
+  
+    循环体 
+  
+  }
+  
+  ```ts
+  let sum: number = 0
+  for(let i:number=1; i<=10; i++){
+      sum += i
+  }
+  console.log(sum)
+  ```
+- break 和 continue
+  
+  break 和 continue 常用在循环语句中，用来改变循环的执行过程
+  
+  break 能够让循环提前结束，即终止循环
+  
+  ```ts
+  for(let i:number=1; i<=5; i++){
+     if(i ===3){
+      break
+    }
+    console.log('He is holding'+ i + 'apples in hand')
+  }
+  ```
+  
+  continue 能够让循环间断执行，即跳过本次循环，继续下一次循环
+  
+  ```ts
+  for(let i:number=1; i<=5; i++){
+     if(i ===3){
+      continue
+    }
+    console.log('He is holding'+ i + 'apples in hand')
+  }
+  ```
+
+### 数组
+
 
