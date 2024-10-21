@@ -240,4 +240,234 @@ TS中的数据类型分为两大类：
 
 ### 数组
 
+数组是用于存放多个数据的集合
+
+<font color='bronze'>注意：数组中通常是相同类型的数据</font>
+
+<font color='bronze'/>数组的类型注解由2部分组成：类型 + [ ] </font>
+
+```ts
+let names: string[] = ['Tom','Mary', 'Annie']
+```
+
+- 创建数组有2种语法形式：
+  
+  - 语法一(推荐)：
+    
+    `let names: string[]=[]` // 如果数组中没有内容，就是一个空数组
+    
+    `let names: string[ ] = ['Tom', 'Mary', 'Annie']`
+    
+    这里表示字符串类型的数组，因此数组元素只能是字符串类型
+    
+    `let count: number[] =[1,2,3,4,5]`
+    
+    这里表示的是number类型的数组，因此数组元素只能是number类型
+  
+  - 语法二(不推荐)：功能和语法一一样，但是更加繁琐
+    
+    `let names: string[ ] = new Array()`
+    
+    ```ts
+    let names: string[] = new Array('Tom','Mary','Annie')
+    
+    相当于：
+    
+    let names: string[] = ['Tom','Mary', 'Annie']
+    ```
+
+- 数组中的元素与索引是一一对应的，通过索引获取到某一个元素的值：
+  
+  语法：数组名称[索引]
+  
+  ```ts
+  let names: string[] = ['Tom','Mary', 'Annie']
+  console.log(names[1]) // Mary
+  ```
+
+- 修改或添加数组中的元素：
+  
+  语法：数组名称[索引] = 新值
+  
+  如果索引存在，就是修改元素的值
+  
+  如果索引不存在，就是给数组添加新元素
+  
+  添加新元素还可以写成：数组名称[数组名称.length] = 新值
+  
+  ```ts
+  let names: string[] = ['Tom','Mary', 'Annie']
+  names[0] = 'James' //数组第1个元素的值改为'James'
+  names[3] = 'Coco' // 给数组添加了一个新元素，值为'Coco'
+  names[names.length] = 'Vincent' // 给数组添加了一个新元素，值为'Vincent'
+  ```
+
+- 遍历数组，推荐使用for循环来遍历数组
+  
+  ```ts
+  let nums:number[] = [1,2,3,4,5]
+  let sum:number = 0
+  
+  for(let i:number=0; i < nums.length; i++){
+      console.log(nums[i])
+      sum += nums[i]
+  }
+  console.log(sum)
+  ```
+
+### 函数
+
+函数就是声明一次，但可以调用任意多次的一段代码，实现代码的复用，提示开发效率
+
+- 函数的使用：
+  
+  1. 声明函数
+  
+  2. 调用函数
+  
+  只有调用函数后，函数中的代码才会执行
+  
+  ```ts
+  function 函数名称（）{ // 声明函数
+      函数体
+  }
+  函数名称() // 调用函数
+  ```
+  
+  ```ts
+  function sum(){
+      let num1: number = 10
+      let num2: number = 20
+      let result: number = num1 + num2
+      console.log(result)
+  }
+  sum()
+  ```
+
+- 函数参数
+  
+  函数参数增加了函数的灵活性和通用性，针对相同的功能，能够适应更多的数据(值)
+  
+  - 形参：声明函数时指定的参数，语法：
+    
+    <font color='bronze'>形参名称: 类型注解</font>，类似于变量声明但没有赋值，用来指定函数可以接收的数据
+    
+    可以把形参理解为是函数的变量，在函数体里可以像使用变量一样使用形参
+  
+  - 实参: 调用函数时传入的参数，它是一个具体的值，用来赋值给形参
+  
+  ```ts
+  function sing(songName:string){ // 形参songName，类型为string
+      console.log(songName)
+  }
+  sing('Happy Hour') // 实参'Happy Hour'
+  ```
+
+- 参数说明：
+  
+  1. 根据具体的功能，函数参数可以有多个，参数之间用逗号来分隔
+     
+     ```ts
+     function fn(name:string, age:number){
+         console.log(name, age)
+     }
+     fn('Tom', 18)
+     ```
+  
+  2. 实参和形参要按照顺序一一对应，否则报错
+     
+     ```ts
+     function fn(name:string, age:number){
+         console.log(name, age)
+     }
+     fn('Tom', 18) // name对应Toom, age 对应18
+     fn() // 报错，函数fn要求有2个参数，但是没有传递参数
+     fn('Tom') // 报错，函数fn要求有2个参数，但是只传递了一个参数
+     fn(18) // 报错，同上
+     ```
+  
+  3. 实参必须符合形参的类型要求，否则报错
+     
+     ```ts
+     function sing(songName:string){ // 形参songName，类型为string
+         console.log(songName)
+     }
+     sing(18) // 报错！形参要求是string类型，但传递的实参是number类型
+     ```
+
+- 函数返回值
+  
+  函数返回值的作用：将函数内部计算的结果返回，以便使用该结果继续参与其他的计算
+  
+  <font color='bronze'>如果没有指定函数的返回值，那么函数返回值的默认类型是 void (空，什么都没有）</font>
+  
+  <font color='bronze'/>或者如果函数就是没有返回值，那么默认返回值的类型是 void</font>
+  
+  当返回值类型是void的时候，void可以省略不写，但最好还是显式的写出来较好
+  
+  ```ts
+  function getSum(nums:number[]):number{ // 返回值的类型是number
+      let sum:number = 0
+      for(let i:number = 0; i< nums.length; i++){
+         sum += nums[i]
+   }
+   return sum 
+  }
+  
+  getSum([1,2,3])
+  ```
+  
+  - 函数返回值的基本使用，2个步骤：
+    
+    1. 指定返回值的类型, 语法：在声明函数的小括号的后面通过`:类型注解` 指定
+       
+       function fn() : <font color='bronze'/>类型注解</font>{
+       
+          return 返回值
+       
+        }
+       
+       ```ts
+       function fn():number{ } // 返回值类型是number
+       ```
+    
+    2. 指定返回值：在函数体中，使用关键字 return 来返回函数执行的结果
+       
+       ```ts
+       function fn():number{ // 返回值类型是number
+         return 18
+       } 
+       ```
+       
+       <font color='bronze'/>注意：返回值必须符合返回值类型的类型要求，否则报错</font>
+  
+  - 函数返回值的接收：
+    
+    1. 使用变量接收函数返回值，相当于直接将返回值赋值给变量
+       
+       ```ts
+       let result: 类型注解 = fn()
+       
+       let result: number = 18
+       ```
+    
+    2. 不需要变量接收返回值，直接使用函数调用的结果(返回值)进行其他计算
+       
+       ```ts
+       function fn():number{ 
+         return 18
+       } 
+       console.log(fn()*10)
+       ```
+  
+  - 关键字 return 的说明
+    
+    1. 将函数内部的计算结果返回
+    
+    2. 终止函数代码执行，即 return 后面的代码不会执行
+    
+    3. 关键字 return 只能在函数中使用，否则会报错
+    
+    4.  关键字 return 可以单独使用，后面可以没有任何代码内容，用来刻意终止函数的执行
+
 
